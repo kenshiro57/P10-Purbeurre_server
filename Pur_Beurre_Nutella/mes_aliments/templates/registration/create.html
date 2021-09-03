@@ -1,0 +1,24 @@
+{% extends 'mes_aliments/base.html' %}
+
+{% block content %}
+		<!-- Masthead-->
+    <div id="orange_top_registration">
+        <div id="registration_form">
+            <form class="form-inline" action="{% url 'create' %}" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-success" id="submit_button">Entrer</button>
+            </form>
+              {% if errors %}
+            <div>
+              {% for key, error in errors %}
+              {% autoescape off %}
+                {{ error }}
+              {% endautoescape %}
+              {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

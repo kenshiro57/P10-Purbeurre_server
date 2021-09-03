@@ -1,0 +1,15 @@
+{% extends 'mes_aliments/base.html' %}
+
+{% block content %}
+	<!-- Login-->
+    <div id="orange_top_registration">
+      <div id="registration_form">
+        <form class="form-inline" action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+                  {{form.as_p}}
+              <button type="submit" class="btn btn-success" id="submit_button">Entrer</button>
+              <p>Vous n'avez pas encore de compte ? Créez en un <a href="{% url 'create' %}">ici</a></p>
+        </form>
+      </div>
+    </div>   
+{% endblock %}

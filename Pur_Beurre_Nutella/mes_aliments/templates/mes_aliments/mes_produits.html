@@ -1,0 +1,47 @@
+{% extends 'mes_aliments/base.html' %}
+
+{% block content %}
+
+{% load static %}
+{% load multifor %}
+	<!-- subsitute-->
+    <div id="orange_top">
+        {% if products|length_is:"0" %}
+                    Palsambleu ! Nous n'avons trouvé aucun résultat à cette requête. Même pas de quoi se ronger la chique !
+                    Partez de nouveau à l'abordage !
+        {% else %}
+            <a href="{% url 'my_product' product.id %}" class="text-center" id="product_detail">
+                <p>
+                    <img src="{{ product.image }}" id="fav_img">
+                     {{ product }}
+                </p>
+            </a>
+            <hr>
+            <div id="orange_top">
+                {% for substitute in substitutes %}
+                    <div id="substitute">
+                        <a href="{% url 'my_product' substitute.id %}" id="product_detail_search">
+                            <img src="{{ substitute.image }}"id="substitute_img">
+                            <div id="substitute_nutri">{{ substitute.nutriscore_grade }}</div>
+                        </a>
+                        <button id="submt_button" type="button" onclick="call({{ product.id }}, {{substitute.id}})"><img src="{% static 'img/save.jpg' %}" id="save" ></button>
+                    </div>
+                {% endfor %}
+                <script type="text/javascript">
+                    function call(id_product, id_substitute){
+                        var ihsan = {
+                            "pk_prod": id_product,
+                            "pk_subs": id_substitute
+                        };
+
+                         $.ajax({
+                            url: "{% url 'home' %}",
+                            type: "POST",
+                            data: ihsan
+                        });
+                    }
+                </script>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
