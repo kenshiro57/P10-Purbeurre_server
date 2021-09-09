@@ -30,7 +30,7 @@ if os.environ.get('ENV') == 'PROD':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["purbonheurre.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["192.241.138.251", "purbonheurre.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -56,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Pur_Beurre_Nutella.urls'
@@ -87,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'purbeurre',
-        'USER': 'postgres',
-        'PASSWORD': 'far57450',
-        'HOST': '127.0.0.1',
+        'USER': 'ihsan',
+        'PASSWORD': 'salman57',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -158,8 +157,6 @@ if os.environ.get('ENV') == 'PROD':
     STATICFILES_DIRS = (
         os.path.join(PROJECT_ROOT, 'static'),
     )
-    
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
