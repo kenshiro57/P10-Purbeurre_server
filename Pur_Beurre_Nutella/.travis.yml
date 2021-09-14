@@ -7,6 +7,10 @@ before_script:
 
 env: DJANGO_SETTINGS_MODULE="Pur_Beurre_Nuttela.settings.travis"
 
+branches:
+  only:
+          - staging
+
 services:
   - postgresql
 
