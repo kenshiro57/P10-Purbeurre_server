@@ -44,7 +44,7 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id(
             "id_password").send_keys('salman57')
         # Click button event
-        self.browser.find_element_by_id("submit_button").click()
+        self.browser.find_element_by_id("registration_button").click()
         time.sleep(5)
         self.assertEqual(self.browser.current_url, self.INDEX_PAGE_URL)
         time.sleep(1)
@@ -57,7 +57,7 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("id_email").send_keys('i@i.com')
         self.browser.find_element_by_id("id_password1").send_keys('azeqsd00')
         self.browser.find_element_by_id("id_password2").send_keys('azeqsd00')
-        self.browser.find_element_by_id("submit_button").click()
+        self.browser.find_element_by_id("registration_button").click()
         self.assertEqual(self.browser.current_url, self.LOGIN_PAGE_URL)
         self.browser.quit()
 
