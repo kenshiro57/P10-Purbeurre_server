@@ -15,5 +15,5 @@ services:
   - postgresql
 
 script:
-  - ./manage.py test mes_aliments.tests.unittest
-  - ./manage.py test mes_aliments.tests.functional_test
+  - /Pur_Beurre_Nutella/manage.py test mes_aliments.tests.unittest
+  - /Pur_Beurre_Nutella/manage.py test mes_aliments.tests.functional_test
