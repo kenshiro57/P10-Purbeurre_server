@@ -33,6 +33,12 @@
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item">
+                            <form action="{% url 'find_substitute' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="request_search" placeholder="Chercher" size="10">
+                            </form>
+                        </li>
                         {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'logout' %}">
@@ -56,11 +62,6 @@
                                 </a>
                             </li>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="/#masthead">
-                                <i class="fas fa-search"></i>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
