@@ -15,5 +15,5 @@ services:
   - postgresql
 
 script:
-  - python /home/ihsan/P10-Purbeurre_server/Pur_Beurre_Nutella/manage.py test mes_aliments.tests.unittest
-  - python /home/ihsan/P10-Purbeurre_server/Pur_Beurre_Nutella/manage.py test mes_aliments.tests.functional_test
+  - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.unittest
+  - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.functional_test
