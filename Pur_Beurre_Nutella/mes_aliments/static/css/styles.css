@@ -11204,6 +11204,9 @@ header.masthead h1, header.masthead .h1 {
         height: 300px;
         width: 300px;
     }
+    #registration_button{
+      width: 70px;
+    }
 }
 
 @media screen and (device-aspect-ratio: 375/812), 
@@ -11413,5 +11416,8 @@ header.masthead h1, header.masthead .h1 {
     #fav_img{
         height: 120px;
         width: 120px;
+    }
+    #registration_button{
+      width: 70px;
     }
 }
