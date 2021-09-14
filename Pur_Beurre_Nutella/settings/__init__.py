@@ -25,10 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z$^qa_%66-$i8kd3)dw0=&8dt1_tsi%+=zo)kd36m!bzty7_xu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PROD':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ["192.241.138.251", "purbonheurre.herokuapp.com", "127.0.0.1"]
 
@@ -145,18 +142,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = ['127.0.0.1']
 
 AUTHENTICATION_BACKENDS = ('mes_aliments.forms.EmailBackend',)
-
-if os.environ.get('ENV') == 'PROD':
-
-    # Static files settings
-    PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-
-    # Extra places for collectstatic to find static files.
-    STATICFILES_DIRS = (
-        os.path.join(PROJECT_ROOT, 'static'),
-    )
-
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
