@@ -1,0 +1,19 @@
+language: python
+python:
+  - '3.9'
+
+before_script:
+  - pip install -r requirements.txt
+
+env: DJANGO_SETTINGS_MODULE="Pur_Beurre_Nutella.settings.travis"
+
+branches:
+  only:
+          - staging
+
+services:
+  - postgresql
+
+script:
+  - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.unittest
+  - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.functional_test
