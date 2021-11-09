@@ -18,7 +18,7 @@ from .forms import RegisterForm, CustomAuthenticationForm
 
 @csrf_exempt
 def index(request):
-    '''return index template'''
+    ''' return index template'''
     template = loader.get_template('mes_aliments/index.html')
     if request.method == 'POST':
         product_id = request.POST.get("pk_prod")
