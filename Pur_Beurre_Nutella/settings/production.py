@@ -14,3 +14,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+sentry_sdk.init(
+    dsn = "https://27109c567d1042a184be83af0aa3d57b@o1039948.ingest.sentry.io/6008793",
+    integrations = [DjangoIntegration()],
+    traces_sample_rate  = 1.0,
+    send_default_pii = True
+    )
