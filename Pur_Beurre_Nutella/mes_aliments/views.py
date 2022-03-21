@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.views.decorators.csrf import csrf_exempt
+from sentry_sdk import capture_message
 
 from .models import Product, Favorite, Contact
 from .helper.function import substitute_search, product_search
@@ -18,7 +19,7 @@ from .forms import RegisterForm, CustomAuthenticationForm
 
 @csrf_exempt
 def index(request):
-    ''' return index template'''
+    ''' returns index template'''
     template = loader.get_template('mes_aliments/index.html')
     if request.method == 'POST':
         product_id = request.POST.get("pk_prod")
@@ -135,6 +136,7 @@ class CustomLoginView(LoginView):
 
 def page_not_found(request, exception):
     '''return the 404 error page'''
+    capture_message("Page not found!", level="error")
     return render(request, 'error_page/404.html', status=404)
 
 
