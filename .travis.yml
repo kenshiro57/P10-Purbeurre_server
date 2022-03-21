@@ -3,11 +3,19 @@ python:
   - '3.9'
 
 before_script:
-  - wget https://msedgedriver.azureedge.net/98.0.1108.56/edgedriver_win64.zip
-  - unzip edgedriver_win64.zip -d ~/
+  - export EDGE_DRIVER=msedgedriver
   - pip install -r requirements.txt
   - cd ./Pur_Beurre_Nutella
   - chmod +x manage.py
+
+addons:
+  firefox: "latest"
+
+before_install:
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz
+  - mkdir geckodriver
+  - tar -xzf geckodriver-v0.21.0-linux64.tar.gz -C geckodriver
+  - export PATH=$PATH:$PWD/geckodriver
 
 env: 
   - DJANGO_SETTINGS_MODULE="settings.travis"

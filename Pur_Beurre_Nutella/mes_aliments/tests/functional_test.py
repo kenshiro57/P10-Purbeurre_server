@@ -17,8 +17,7 @@ class TestProject(LiveServerTestCase):
     def setUp(self):
         ''' Init all Functional test '''
         # Path to edge webdriver
-        self.browser = webdriver.Edge(
-            r"C:\Users\ihsan\Desktop\msedgedriver.exe")
+        self.browser = webdriver.Firefox()
         self.INDEX_PAGE_URL = 'http://127.0.0.1:8000/'
         self.LOGIN_PAGE_URL = 'http://127.0.0.1:8000/login/'
         self.CREATE_PAGE_URL = 'http://127.0.0.1:8000/create/'
