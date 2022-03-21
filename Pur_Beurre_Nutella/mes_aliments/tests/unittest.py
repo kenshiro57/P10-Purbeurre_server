@@ -78,12 +78,12 @@ class ModelsTestCase(TestCase):
                           substitute_search('pizza5')[2].name,
                           substitute_search('pizza5')[3].name,
                           substitute_search('pizza5')[4].name],
-                         ['pizza6', 'pizza2', 'pizza3', 'pizza4', 'pizza1'])
+                         ['pizza6', 'pizza4', 'pizza3', 'pizza2', 'pizza1'])
         self.assertEqual([substitute_search('pizza4')[0].name,
                           substitute_search('pizza4')[1].name,
                           substitute_search('pizza4')[2].name,
                           substitute_search('pizza4')[3].name],
-                         ['pizza6', 'pizza2', 'pizza3', 'pizza1'])
+                         ['pizza6', 'pizza3', 'pizza2', 'pizza1'])
         self.assertEqual([substitute_search('pizza2')[0].name,
                           substitute_search('pizza2')[1].name,
                           substitute_search('pizza2')[2].name],
