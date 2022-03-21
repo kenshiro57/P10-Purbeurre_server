@@ -3,11 +3,11 @@ python:
   - '3.9'
 
 before_script:
-  - cd ./Pur_Beurre_Nutella
-  - chmod +x manage.py
   - wget https://msedgedriver.azureedge.net/98.0.1108.56/edgedriver_win64.zip
   - unzip edgedriver_win64.zip -d ~/
   - pip install -r requirements.txt
+  - cd ./Pur_Beurre_Nutella
+  - chmod +x manage.py
 
 env: 
   - DJANGO_SETTINGS_MODULE="Pur_Beurre_Nutella.settings.travis"
