@@ -29,7 +29,7 @@ class OpenFoodFactsAPITestCase(TestCase):
                                 "page": "1"
                                 }
 
-    @patch('data.requests.get')
+    @patch('mes_aliments.data.requests.get')
     def test_get_data_openfoodfacts(self):
         '''  '''
         self.return_value.ok = True
@@ -69,7 +69,7 @@ class ModelsTestCase(TestCase):
 
     def test_substitute_search(self):
         '''Test the substitute_search method if returns the correct values'''
-        self.assertEqual(substitute_search('pizza3')[0].name, 'pizza1')
+        self.assertEqual(substitute_search('pizza3')[0].name, 'pizza6')
         self.assertEqual([substitute_search('pizza5')[0].name,
                           substitute_search('pizza5')[1].name,
                           substitute_search('pizza5')[2].name,
