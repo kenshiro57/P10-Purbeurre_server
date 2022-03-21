@@ -10,7 +10,7 @@ before_script:
   - chmod +x manage.py
 
 env: 
-  - DJANGO_SETTINGS_MODULE="Pur_Beurre_Nutella.settings.travis"
+  - DJANGO_SETTINGS_MODULE="settings.travis"
 
 branches:
   only:
