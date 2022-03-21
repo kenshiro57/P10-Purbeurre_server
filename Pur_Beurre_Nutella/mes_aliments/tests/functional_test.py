@@ -5,6 +5,7 @@
 import time
 from django.test import LiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver import FirefoxOptions
 
 # from ..models import Category, Contact, Product, Favorite
 
@@ -17,7 +18,9 @@ class TestProject(LiveServerTestCase):
     def setUp(self):
         ''' Init all Functional test '''
         # Path to edge webdriver
-        self.browser = webdriver.Firefox()
+        opts = FirefoxOptions()
+        opts.add_argument("--headless")
+        self.browser = webdriver.Firefox(firefox_options=opts)
         self.INDEX_PAGE_URL = 'http://127.0.0.1:8000/'
         self.LOGIN_PAGE_URL = 'http://127.0.0.1:8000/login/'
         self.CREATE_PAGE_URL = 'http://127.0.0.1:8000/create/'
