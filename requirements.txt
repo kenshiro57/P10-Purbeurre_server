@@ -16,7 +16,6 @@ lazy-object-proxy==1.6.0
 mccabe==0.6.1
 mock==4.0.3
 newrelic==7.2.2.169
-pkg_resources==0.0.0
 psycopg2==2.9.1
 pycodestyle==2.7.0
 pyflakes==2.3.1
