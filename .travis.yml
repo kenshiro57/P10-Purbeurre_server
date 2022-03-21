@@ -16,6 +16,6 @@ services:
   - postgresql
 
 script:
-  - call cd Pur_Beurre_Nutella     
+  - cd Pur_Beurre_Nutella     
   - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.unittest
   - python Pur_Beurre_Nutella/manage.py test mes_aliments.tests.functional_test
