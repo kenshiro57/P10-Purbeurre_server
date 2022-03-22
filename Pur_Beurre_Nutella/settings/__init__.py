@@ -13,6 +13,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 import dj_database_url
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn = "https://27109c567d1042a184be83af0aa3d57b@o1039948.ingest.sentry.io/6008793",
+    integrations = [DjangoIntegration()],
+    traces_sample_rate  = 1.0,
+    send_default_pii = True
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +34,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z$^qa_%66-$i8kd3)dw0=&8dt1_tsi%+=zo)kd36m!bzty7_xu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["192.241.138.251", "purbonheurre.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["192.241.138.251", "127.0.0.1"]
 
 
 # Application definition
