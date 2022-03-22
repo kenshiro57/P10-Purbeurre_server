@@ -18,7 +18,7 @@ before_install:
   - export PATH=$PATH:$PWD/geckodriver
 
 env: 
-  - DJANGO_SETTINGS_MODULE="settings.travis"
+  - DJANGO_SETTINGS_MODULE="settings.__init__"
 
 branches:
   only:
