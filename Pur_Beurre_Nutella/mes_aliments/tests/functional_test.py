@@ -68,5 +68,5 @@ class TestProject(LiveServerTestCase):
         self.browser.get(self.INDEX_PAGE_URL)
         self.browser.find_element_by_id("text_input").send_keys('pizza')
         self.browser.find_element_by_id("button").click()
-        self.browser.find_element_by_id("//img[@id='fav_img']").click()
+        self.browser.find_element_by_xpath("//img[@id='fav_img']").click()
         self.assertEqual(self.browser.current_url, self.PRODUCT_DETAIL_URL)
