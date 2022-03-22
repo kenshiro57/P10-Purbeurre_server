@@ -85,7 +85,7 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("text_input").send_keys("pizza")
         self.browser.find_element_by_id("button").click()
         time.sleep(2)
-        self.browser.find_element_by_class_name("save3").click()
+        self.browser.find_element_by_id("submt_button3").click()
         time.sleep(2)
         self.browser.find_element_by_id("favorite_link").click()
         time.sleep(5)

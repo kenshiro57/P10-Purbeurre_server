@@ -24,7 +24,7 @@
                             <img src="{{ substitute.image }}"id="substitute_img">
                             <div id="substitute_nutri">{{ substitute.nutriscore_grade }}</div>
                         </a>
-			<button id="submt_button" type="button" onclick="call({{ product.id }}, {{substitute.id}})"><img src="{% static 'img/save.jpg' %}" id="save" class="save{{substitute.id}}"></button>
+			<button id="submt_button{{substitute.id}}" type="button" onclick="call({{ product.id }}, {{substitute.id}})"><img src="{% static 'img/save.jpg' %}" id="save"></button>
                     </div>
                 {% endfor %}
                 <script type="text/javascript">
