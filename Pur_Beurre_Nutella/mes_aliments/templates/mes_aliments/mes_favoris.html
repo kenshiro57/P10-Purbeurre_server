@@ -6,7 +6,7 @@
 	<!-- my_favorite-->
     <div id="orange_top">
       {% if favorite_product|length_is:"0" %}
-        <p>Votre liste de Favoris est nulle! Veuillez enregistrer des produits dans la base de données pour afficher cette liste.</p>
+        <p id="zero_fav">Votre liste de Favoris est nulle! Veuillez enregistrer des produits dans la base de données pour afficher cette liste.</p>
       {% else %}
             {% load multifor %}
                 {% for product in favorite_product; substitute in favorite_substitute %}
