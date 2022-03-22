@@ -89,7 +89,7 @@ class TestProject(LiveServerTestCase):
         time.sleep(2)
         self.browser.find_element_by_xpath("//a[@href='/mes_favoris/']").click()
         time.sleep(5)
-        self.browser.find_element_by_id("dlt_fav_btn").click()
+        self.browser.find_element_by_tag_name("button").click()
         time.sleep(1)
         self.text = self.browser.find_element_by_tag_name("p")
         self.assertEqual(self.text.get_attribute('innerHTML'),
