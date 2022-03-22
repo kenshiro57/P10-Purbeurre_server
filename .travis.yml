@@ -4,9 +4,13 @@ python:
 
 before_script:
   - export EDGE_DRIVER=msedgedriver
+  - DATABASE_NAME='test_db'
+  - DATABASE_USER='postgres'
+  - DATABASE_PASSWORD=''
   - pip install -r requirements.txt
   - cd ./Pur_Beurre_Nutella
   - chmod +x manage.py
+  - psql -c 'create database test_db;' -U postgres
 
 addons:
   firefox: "latest"
@@ -18,7 +22,7 @@ before_install:
   - export PATH=$PATH:$PWD/geckodriver
 
 env: 
-  - DJANGO_SETTINGS_MODULE="settings.__init__"
+  - DJANGO_SETTINGS_MODULE="settings.travis"
 
 branches:
   only:
