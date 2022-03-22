@@ -29,4 +29,4 @@ services:
 
 script:     
   - python manage.py test mes_aliments.tests.unittest
-  - python manage.py test mes_aliments.tests.functional_test
+  - python manage.py runserver & python manage.py test mes_aliments.tests.functional_test
