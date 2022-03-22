@@ -87,7 +87,7 @@ class TestProject(LiveServerTestCase):
         time.sleep(2)
         self.browser.find_element_by_id("submt_button100").click()
         time.sleep(2)
-        self.browser.find_element_by_xpath("//a[@hred='mes_favoris']").click()
+        self.browser.find_element_by_xpath("//a[@href='/mes_favoris/']").click()
         time.sleep(5)
         self.browser.find_element_by_id("dlt_fav_btn").click()
         time.sleep(1)
