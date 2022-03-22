@@ -42,9 +42,9 @@ class TestProject(LiveServerTestCase):
         self.browser.get(self.LOGIN_PAGE_URL)
         # Search the Html element by id and input the value
         self.browser.find_element_by_id(
-            "id_username").send_keys('i')
+            "id_username").send_keys('iii')
         self.browser.find_element_by_id(
-            "id_password").send_keys('salman57')
+                "id_password").send_keys('azeqsd00')
         # Click button event
         self.browser.find_element_by_id("registration_button").click()
         time.sleep(5)
@@ -68,5 +68,5 @@ class TestProject(LiveServerTestCase):
         self.browser.get(self.INDEX_PAGE_URL)
         self.browser.find_element_by_id("text_input").send_keys('pizza')
         self.browser.find_element_by_id("button").click()
-        self.browser.find_element_by_id("fav_img").click()
+        self.browser.find_element_by_id("//img[@id='fav_img']").click()
         self.assertEqual(self.browser.current_url, self.PRODUCT_DETAIL_URL)
