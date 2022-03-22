@@ -47,8 +47,6 @@ def product(request):
                 return render(request, 'error_page/404.html', status=404)
             my_product = product_search(search_request)[0]
             substitutes = substitute_search(search_request)
-            for substitute in substitutes:
-                print(substitute.id)
         context = {'product': my_product,
                    'substitutes': substitutes}
     except IndexError:
