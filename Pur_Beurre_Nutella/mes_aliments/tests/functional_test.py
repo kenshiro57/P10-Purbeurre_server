@@ -72,7 +72,7 @@ class TestProject(LiveServerTestCase):
         self.assertEqual(self.browser.current_url, self.PRODUCT_DETAIL_URL)
 
     def test_delete_favorite(self):
-        ''' favorite page functional test '''
+        ''' favorite page functional test method'''
         self.browser.get(self.LOGIN_PAGE_URL)
         self.browser.find_element_by_id(
             "id_username").send_keys('iii')
@@ -87,7 +87,6 @@ class TestProject(LiveServerTestCase):
         time.sleep(2)
         self.browser.find_element_by_id("submt_button100").click()
         time.sleep(2)
-        self.browser.find_element_by_partial_link_text("Masquer").click()
         self.browser.find_element_by_id("favorite_link").click()
         time.sleep(5)
         self.browser.find_element_by_id("dlt_fav_btn").click()
