@@ -85,14 +85,13 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("text_input").send_keys("pizza")
         self.browser.find_element_by_id("button").click()
         time.sleep(2)
-        self.browser.find_element_by_id("submt_button2").click()
+        self.browser.find_element_by_class_name("save2").click()
         time.sleep(2)
         self.browser.find_element_by_id("favorite_link").click()
         time.sleep(5)
         self.browser.find_element_by_id("dlt_fav_btn").click()
         time.sleep(1)
         self.text = self.browser.find_element_by_tag_name("p")
-        print(self.text.get_attribute('innerHTML'))
         self.assertEqual(self.text.get_attribute('innerHTML'),
             "Votre liste de Favoris est nulle! Veuillez enregistrer"
             " des produits dans la base de données pour afficher cette liste.")
