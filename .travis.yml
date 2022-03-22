@@ -3,10 +3,9 @@ python:
   - '3.9'
 
 before_script:
-  - export EDGE_DRIVER=msedgedriver
-  - DATABASE_NAME='test_db'
-  - DATABASE_USER='postgres'
-  - DATABASE_PASSWORD=''
+  - export DATABASE_NAME='test_db'
+  - export DATABASE_USER='postgres'
+  - export DATABASE_PASSWORD=''
   - pip install -r requirements.txt
   - cd ./Pur_Beurre_Nutella
   - chmod +x manage.py
