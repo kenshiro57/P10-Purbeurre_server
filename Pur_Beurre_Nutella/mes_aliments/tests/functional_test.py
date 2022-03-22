@@ -87,6 +87,7 @@ class TestProject(LiveServerTestCase):
         time.sleep(2)
         self.browser.find_element_by_id("submt_button100").click()
         time.sleep(2)
+        self.browser.find_element_by_partial_link_text("Masquer").click()
         self.browser.find_element_by_id("favorite_link").click()
         time.sleep(5)
         self.browser.find_element_by_id("dlt_fav_btn").click()
