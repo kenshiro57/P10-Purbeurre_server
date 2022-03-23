@@ -84,5 +84,5 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("submt_button100").click()
         self.browser.find_element_by_xpath("//a[@href='/mes_favoris/']").click()
         self.nutri_vs = self.browser.find_element_by_id("nutri_vs").get_attribute('innerHTML')
-        self.assertEqual(self.nutri_vs, 'b vs a')
+        self.assertEqual(self.nutri_vs, '\n                            b vs a\n                        ')
         
