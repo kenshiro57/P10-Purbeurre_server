@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import dj_database_url
 import sentry_sdk
+import raven
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
@@ -22,6 +23,8 @@ sentry_sdk.init(
     traces_sample_rate  = 1.0,
     send_default_pii = True
 )
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'multiforloop',
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +155,51 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = ['127.0.0.1']
 
 AUTHENTICATION_BACKENDS = ('mes_aliments.forms.EmailBackend',)
+
+RAVEN_CONFIG = {
+    'dsn': 'https://27109c567d1042a184be83af0aa3d57b@o1039948.ingest.sentry.io/6008793',
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'root': {
+        'level': 'INFO', # WARNING by default. Change this to capture more than warnings.
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s '
+                      '%(process)d %(thread)d %(message)s'
+        },
+    },
+    'handlers': {
+        'sentry': {
+            'level': 'INFO', # To capture more than ERROR, change to WARNING, INFO, etc.
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+            'tags': {'custom-tag': 'x'},
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'ERROR',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
+}

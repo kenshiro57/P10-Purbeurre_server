@@ -2,6 +2,7 @@
    -*- coding: Utf-8 -'''
 
 
+from sentry_sdk import capture_message
 from django.http import HttpResponse
 from django.shortcuts import render, redirect  # , get_object_or_404
 from django.template import loader
@@ -21,6 +22,7 @@ from .forms import RegisterForm, CustomAuthenticationForm
 def index(request):
     ''' return index template'''
     template = loader.get_template('mes_aliments/index.html')
+    capture_message('Going home')
     if request.method == 'POST':
         product_id = request.POST.get("pk_prod")
         substitute_id = request.POST.get('pk_subs')
@@ -44,12 +46,14 @@ def product(request):
         if request.method == 'POST':
             search_request = request.POST.get('request_search')
             if search_request == '':
+                capture_message('search request empty')
                 return render(request, 'error_page/404.html', status=404)
             my_product = product_search(search_request)[0]
             substitutes = substitute_search(search_request)
         context = {'product': my_product,
                    'substitutes': substitutes}
     except IndexError:
+        capture_message('Search request not exists')
         return render(request, 'error_page/404.html', status=404)
     return HttpResponse(template.render(context, request=request))
 
