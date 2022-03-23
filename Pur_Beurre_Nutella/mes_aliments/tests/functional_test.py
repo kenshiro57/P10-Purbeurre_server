@@ -69,7 +69,7 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_xpath("//img[@id='fav_img']").click()
         self.assertEqual(self.browser.current_url, self.PRODUCT_DETAIL_URL)
 
-    def test_delete_favorite(self):
+    def test_add_favorite(self):
         ''' favorite page functional test method'''
         self.browser.get(self.LOGIN_PAGE_URL)
         self.browser.find_element_by_id(
@@ -83,5 +83,6 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("button").click()
         self.browser.find_element_by_id("submt_button100").click()
         self.browser.find_element_by_xpath("//a[@href='/mes_favoris/']").click()
-        print(self.browser.find_element_by_id("nutri_vs").get_attribute('innerHTML'))
+        self.nutri_vs = self.browser.find_element_by_id("nutri_vs").get_attribute('innerHTML')
+        self.assertEqual(self.nutri_vs, 'b vs a')
         
