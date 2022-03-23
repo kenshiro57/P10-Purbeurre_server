@@ -83,5 +83,5 @@ class TestProject(LiveServerTestCase):
         self.browser.find_element_by_id("button").click()
         self.browser.find_element_by_id("submt_button100").click()
         self.browser.find_element_by_xpath("//a[@href='/mes_favoris/']").click()
-        print(Favorite.objects.all())
+        print(self.browser.find_element_by_id("nutri_vs").get_attribute('innerHTML'))
         
