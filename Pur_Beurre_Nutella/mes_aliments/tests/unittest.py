@@ -28,13 +28,16 @@ class OpenFoodFactsAPITestCase(TestCase):
                                 "page_size": "100",
                                 "page": "1"
                                 }
-
-    @patch('data.requests.get')
+    
+    def return_value(self):
+        '''  '''
+        return 'list_of_data'
+        
+    @patch('mes_aliments.data.requests.get', return_value)
     def test_get_data_openfoodfacts(self):
         '''  '''
-        self.return_value.ok = True
         response = requests.get(self.url)
-        self.assertTrue(response)
+        self.assertEqual(response, 'list_of_data')
 
 
 
@@ -69,22 +72,22 @@ class ModelsTestCase(TestCase):
 
     def test_substitute_search(self):
         '''Test the substitute_search method if returns the correct values'''
-        self.assertEqual(substitute_search('pizza3')[0].name, 'pizza1')
+        self.assertEqual(substitute_search('pizza3')[0].name, 'pizza6')
         self.assertEqual([substitute_search('pizza5')[0].name,
                           substitute_search('pizza5')[1].name,
                           substitute_search('pizza5')[2].name,
                           substitute_search('pizza5')[3].name,
                           substitute_search('pizza5')[4].name],
-                         ['pizza1', 'pizza2', 'pizza3', 'pizza4', 'pizza6'])
+                         ['pizza6', 'pizza4', 'pizza3', 'pizza2', 'pizza1'])
         self.assertEqual([substitute_search('pizza4')[0].name,
                           substitute_search('pizza4')[1].name,
                           substitute_search('pizza4')[2].name,
                           substitute_search('pizza4')[3].name],
-                         ['pizza1', 'pizza2', 'pizza3', 'pizza6'])
+                         ['pizza6', 'pizza3', 'pizza2', 'pizza1'])
         self.assertEqual([substitute_search('pizza2')[0].name,
                           substitute_search('pizza2')[1].name,
                           substitute_search('pizza2')[2].name],
-                         ['pizza1', 'pizza3', 'pizza6'])
+                         ['pizza6', 'pizza3', 'pizza1'])
         self.assertEqual(substitute_search('pizza1')[0].name, 'pizza6')
 
 

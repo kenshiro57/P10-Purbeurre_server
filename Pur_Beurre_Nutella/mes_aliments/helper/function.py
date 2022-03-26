@@ -51,6 +51,7 @@ def substitute_search(search_request):
             id=my_product.id)
     return substitutes_search
 
+
 def get_data_opf(name):
     url = 'https://fr.openfoodfacts.org/cgi/search.pl?'
     category_name = 'pizza'

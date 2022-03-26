@@ -25,6 +25,9 @@ from mes_aliments import views
 HANDLER404 = 'mes_aliments.views.page_not_found'
 HANDLER500 = 'mes_aliments.views.server_error'
 
+def trigger_error(request):
+    devision_by_zeo = 1 / 0
+
 urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^mention_legal', views.legal_mention, name='mention_legal'),
@@ -37,6 +40,7 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login'),
     url(r'^logout/$', LogoutView.as_view(), {'next_page':
         settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    path('sentry-debug/', trigger_error),
     path('admin/', admin.site.urls),
 ]
 
